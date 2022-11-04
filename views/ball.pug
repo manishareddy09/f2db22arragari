@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  
+  - let results=[{ball_colour:"Red",ball_size:50,ball_cost:200},{ball_colour:"Black",ball_size:40,ball_cost:300},{ball_colour:"Yellow",ball_size:60,ball_cost:250}]
+  div(class="container-fluid")
+  div(class="row")
+   each value,index in results
+    div(class="col-sm-2" onclick=`buy(${index})`)  #{value.ball_colour} Ball, having #{value.ball_size}, costs #{value.ball_cost}
+   script.
+    function buy(index)
+    {
+      alert(`Your purchased Item ${index+1}`)
+    }
+  
