@@ -1,11 +1,7 @@
-# f2wb22arragari
+# f2db22arragari
 
-WEBAPPS ASSIGNMENT 10
+WEBAPPS ASSIGNMENT 11
 
-[Render](https://f2wb22arragari.onrender.com/)
+[Render link](https://f2db22arragari.onrender.com)
 
-### Class details:
-* ball
-    * ball_colour - string
-    * ball_size - number
-    * ball_cost - number
+
