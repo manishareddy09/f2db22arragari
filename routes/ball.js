@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+// var express = require('express');
+// var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('ball', { title: 'Search Results ball' });
-});
+// /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('ball', { title: 'Search Results ball' });
+// });
 
-module.exports = router;
+// module.exports = router;
+
+var express = require('express'); 
+const ball_controlers= require('../controllers/ball'); 
+var router = express.Router(); 
+ 
+/* GET ball */ 
+router.get('/', ball_controlers.ball_view_all_Page ); 
+module.exports = router; 
