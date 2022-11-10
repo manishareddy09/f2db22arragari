@@ -4,11 +4,30 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+require('dotenv').config(); 
+const connectionString =  
+process.env.MONGO_CON 
+mongoose = require('mongoose'); 
+mongoose.connect(connectionString,  
+{useNewUrlParser: true, 
+useUnifiedTopology: true}); 
+
+//Get the default connection 
+var db = mongoose.connection; 
+ 
+//Bind connection to error event  
+db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
+db.once("open", function(){ 
+console.log("Connection to DB succeeded")}); 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var ballRouter = require('./routes/ball');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
+var resourceRouter = require('./routes/resource');
+var ball = require("./models/ball");
 
 var app = express();
 
@@ -26,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/ball',ballRouter);
 app.use('/gridbuild',gridbuildRouter);
+app.use('/resource',resourceRouter);
 app.use('/selector',selectorRouter);
 
 // catch 404 and forward to error handler
@@ -43,5 +63,34 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// We can seed the collection if needed on server start
+ 
+async function recreateDB(){ 
+  // Delete everything 
+  await ball.deleteMany(); 
+ 
+  let instance1 = new 
+ball({ball_colour:"Red",  ball_size:50, ball_cost:200}); 
+  instance1.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("First object saved") 
+  }); 
+  let instance2 = new 
+ball({ball_colour:"Black",  ball_size:40, ball_cost:300}); 
+  instance2.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("Second object saved") 
+  }); 
+  let instance3 = new 
+ball({ball_colour:"Yellow",  ball_size:60, ball_cost:250}); 
+  instance3.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("Third object saved") 
+  }); 
+} 
+ 
+let reseed = true; 
+if (reseed) { recreateDB();} 
 
 module.exports = app;
