@@ -24,3 +24,9 @@ router.get('/detail', ball_controllers.ball_view_one_Page);
 
 /* GET create ball page */ 
 router.get('/create', ball_controllers.ball_create_Page); 
+
+/* GET create update page */ 
+router.get('/update', ball_controllers.ball_update_Page); 
+
+/* GET delete ball page */ 
+router.get('/delete', ball_controllers.ball_delete_Page); 

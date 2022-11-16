@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let ballid = toShow._id 
+  - let ball_colour = toShow.ball_colour
+  - let ball_size = toShow.ball_size
+  - let ball_cost = toShow.ball_cost 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{ballid} 
+  - let actionid = "/resource/ball/" + ballid 
+  form(id='ballForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.ballAttr(for='ball_type') Ball colour 
+        input#ball_colour(type='text', name='ball_colour', value= ball_colour ) 
+    div.form-group 
+        label.ballAttr(for='size') Ball size 
+        input#ball_size(type='number', name='ball_size', value= ball_size ) 
+    div.form-group 
+        label.ballAttr(for='cost') Ball cost 
+        input#ball_cost(type='number', name='ball_cost', value= ball_cost ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['ballForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
