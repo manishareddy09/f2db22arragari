@@ -21,3 +21,6 @@ router.get('/ball/:id', ball_controllers.ball_detail);
 
 /* GET detail ball page */ 
 router.get('/detail', ball_controllers.ball_view_one_Page); 
+
+/* GET create ball page */ 
+router.get('/create', ball_controllers.ball_create_Page); 
