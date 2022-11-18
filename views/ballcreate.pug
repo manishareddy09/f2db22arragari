@@ -3,7 +3,9 @@ extends layout
 block content 
   h1= title 
  
-  form(id='ballForm', action="/resource/ball", method="POST") 
+  form(id='ballForm', action="/resource/ball", method="POST", class='a') 
+    div(class='a').form-group
+        img(src='/images/Basketball.jpg' width="100px" height="100px")
     div.form-group 
         label.ballAttr(for='ball_colour') Ball colour 
         input#ball_colour(type='text', name='ball_colour') 

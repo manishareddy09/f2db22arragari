@@ -2,15 +2,22 @@ extends layout
 
 block content
   h1= title
-  
-  - let results=[{ball_colour:"Red",ball_size:50,ball_cost:200},{ball_colour:"Black",ball_size:40,ball_cost:300},{ball_colour:"Yellow",ball_size:60,ball_cost:250}]
+  - let result  = results;
   div(class="container-fluid")
-  div(class="row")
+  div(class="row m-1")
    each value,index in results
-    div(class="col-sm-2" onclick=`buy(${index})`)  #{value.ball_colour} Ball, having #{value.ball_size}, costs #{value.ball_cost}
+    - let destination = `buy(\"/ball/update?id=${value._id}\")`
+    //-div(class="col-sm-2" onclick=`buy(${index})`)  #{value.ball_colour}, #{value.ball_size}, #{value.ball_cost}
+    div(class="row-sm-2", class="m-1" )  #{value.ball_colour}, #{value.ball_size}, #{value.ball_cost}
+      button.btn(class="btn-primary m1-1", onclick=destination) Update
    script.
-    function buy(index)
+    function buy(path)
     {
-      alert(`Your purchased Item ${index+1}`)
+      //-alert(`Your purchased Item ${index+1}`)
+      window.location.href=path 
     }
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
+    
   

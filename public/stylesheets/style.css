@@ -11,3 +11,32 @@ a {
   background-color: aquamarine; 
   width: 120px; 
 } 
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
+}
+
+.a {
+  text-align: center;
+  padding: 10px;
+  background-color: brown;
+  border-radius: 50%;
+
+}
+
+b{
+    padding-left: 500px;
+}
+.c{
+  padding-left: 500px;
+}
+.ballAttr { 
+  background-color:black;
+  width: 120px; 
+  text-shadow: 2px 2px white ;
+} 
+
+.e {
+background-color: rgba(32, 237, 80, 0.863);
+}

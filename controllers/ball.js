@@ -87,7 +87,7 @@ failed`);
 exports.ball_view_all_Page = async function(req, res) { 
     try{ 
         theball = await ball.find(); 
-        res.render('ball', { title: 'ball Search Results', results: theball }); 
+        res.render('ball', { title: 'Ball Search Results', results: theball }); 
     } 
     catch(err){ 
         res.status(500); 
