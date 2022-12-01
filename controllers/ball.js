@@ -101,7 +101,7 @@ exports.ball_view_all_Page = async function(req, res) {
     try{ 
         result = await ball.findById( req.query.id) 
         res.render('balldetail',  
-{ title: 'ball Detail', toShow: result }); 
+{ title: 'Ball Detail', toShow: result }); 
     } 
     catch(err){ 
         res.status(500) 
